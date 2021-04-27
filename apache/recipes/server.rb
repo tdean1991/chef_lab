@@ -6,18 +6,8 @@
 
 package 'httpd' 
 
-file '/var/www/html/index.html' do
-    content "<html>
-        <head>
-            <title>Hello</title>
-        </head>
-        <body>
-            <h1>Hello, world!</h1>
-            <h2>Ip Address: #{node['ipaddress']}</h2>
-            <h2>Host Name: #{node['hostname']}</h2>
-        </body>
-    
-    </html>"    
+template '/var/www/html/index.html' do
+    source 'index.html.erb'    
 end
 
 service 'httpd' do
